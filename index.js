@@ -24,11 +24,8 @@ app.use(cors()); // Enable CORS for all requests
 // POST endpoint for creating resources
 app.post('/resources', async (req, res) => {
   try {
-    console.log("POSTING", req.body)
     const resource = new Resource(req.body);
-    console.log("CREATED RESOURCE");
     await resource.save();
-    console.log("SAVED RESOURCE");
     res.status(201).send({ message: 'Resource created', resource });
   } catch (error) {
     res.status(400).send({ message: 'Error creating resource', error });
